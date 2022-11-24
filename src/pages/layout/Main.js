@@ -1,9 +1,14 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
+import Footer from '../../Shares/Footer/Footer/Footer';
+import Header from '../../Shares/Header/Header/Header';
 
 const Main = () => {
     return (
         <div>
-            <h1></h1>
+            <Header></Header>
+            <Outlet></Outlet>
+            <Footer></Footer>
         </div>
     );
 };
