@@ -1,9 +1,10 @@
 import React from 'react';
+import CategoryTopic from './CategoryTopic';
 
 const Category = () => {
     return (
         <div>
-            <h1>kkk</h1>
+            <CategoryTopic></CategoryTopic>
         </div>
     );
 };

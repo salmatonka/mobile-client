@@ -1,12 +1,16 @@
 import React from 'react';
 import Banner from '../Banner/Banner';
-import HomeItems from '../HomeItems/HomeItems';
+import Category from '../Category/Category';
+import HomeBanner from '../HomeBanner/HomeBanner';
+
+
 
 const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <HomeItems></HomeItems>
+             <Category></Category>
+            <HomeBanner></HomeBanner>
         </div>
     );
 };
