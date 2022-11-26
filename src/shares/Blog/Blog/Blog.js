@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Blog = () => {
     return (
-        <>
+        <div className='bg-violet-200'>
               <h1 className='text-3xl font-bold text-center'>Question</h1>
          
          {/* 1.Question...... */}
@@ -25,7 +25,7 @@ const Blog = () => {
 
    {/* 2.Question...... */}
 
-    <div className="dark:bg-gray-800 dark:text-gray-100">
+    <div className=" dark:text-gray-100">
         <div className="container max-w-4xl px-10 py-6 mx-auto rounded-lg shadow-sm dark:bg-gray-900">
           
             <div className="mt-3">
@@ -67,7 +67,7 @@ const Blog = () => {
 
 
 
-        </>
+        </div>
     );
 };
 

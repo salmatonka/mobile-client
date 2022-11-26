@@ -1,6 +1,7 @@
 import React from 'react';
+import Category from '../../Category/Category/Category';
 import Banner from '../Banner/Banner';
-import Category from '../Category/Category';
+
 import HomeBanner from '../HomeBanner/HomeBanner';
 
 
