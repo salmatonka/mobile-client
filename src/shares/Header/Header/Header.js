@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 const Header = () => {
+  const {user, logOut} = useContext(AuthContext);
+
+  const handleLogOut = () =>{
+    logOut()
+    .then()
+    .catch();
+  }
     return (
         <div className="navbar bg-violet-400 py-6">
         <div className="navbar-start">
@@ -17,10 +25,7 @@ const Header = () => {
           <Link to='/' className="btn btn-ghost normal-case lg:text-4xl font-bold">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10">
       <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
-       </svg>
-
-            
-            mMarket.com</Link>
+       </svg>mMarket.com</Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
@@ -29,8 +34,16 @@ const Header = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <Link to='/login' className="btn bg-violet-600">Login</Link>
-          <Link to='/signUp' className="btn bg-violet-600">SignUp</Link>
+          {
+            user?.email ? 
+            <>
+            <button onClick={handleLogOut} className="btn bg-violet-600">LogOut</button>
+            </>
+            :
+            <Link to='/login' className="btn bg-violet-600">Login</Link>
+          }
+          
+          
         </div>
       </div>
     );

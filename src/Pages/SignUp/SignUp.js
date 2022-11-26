@@ -1,10 +1,11 @@
 import React from 'react';
 import {useContext} from 'react';
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
-
+import {toast} from 'react-toastify';
 const SignUp = () => {
-     const {createUser} = useContext(AuthContext);
+	
+	const {createUser,updateName} = useContext(AuthContext);
 	 const handleSignUp = event =>{
 
 		event.preventDefault();
@@ -14,17 +15,23 @@ const SignUp = () => {
 		const password = form.password.value;
 		
 
-		console.log(name,email,password)
+		// console.log(name,email,password)
 
+		
 		createUser(email,password)
 		.then(result=> {
 		      const user = result.user;
 		      console.log(user);
 
-		
+			  updateName(name)
+          .then(() => {
+        toast.success('Name success')
+
+		 })
 
 		
-    
+      }).catch((error) => {
+        toast.error(error.message)
 
       })
 
@@ -33,36 +40,8 @@ const SignUp = () => {
 
 	} 
 
-	// const handleGoogleSignin = () =>{
-        
-	// 	handleGoogleAdd()
-	// 	.then(result=>{
-	// 		console.log(result.user)
-	// 		navigate(from, { replace: true })
-	// 	})
-	// }
-
-		// console.log(name,email,password)
-
-		// createUser(email,password)
-		// .then(result=> {
-		//       const user = result.user;
-		//       console.log(user);
-
-		// 	  updateName(name)
-        //   .then(() => {
-        // toast.success('Name success')
-
-		//  })
-
-		
-    //   }).catch((error) => {
-    //     toast.error(error.message)
-
-    //   })
 
 	
-
 
     return (
         <div className=' flex justify-center py-10 bg-violet-200'>
