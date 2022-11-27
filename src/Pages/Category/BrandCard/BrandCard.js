@@ -1,8 +1,8 @@
 import React from 'react';
-import CategoryDetails from '../CategoryDetails/CategoryDetails';
 
-const BrandCard = ({brand}) => {
-    const {brand_name,img,original_price,resale_price,yearUsed,postedDate,Location,seller} = brand;
+
+const BrandCard = ({service,setPhoneServices}) => {
+    const {brand_name,img,original_price,resale_price,yearUsed,postedDate,Location,seller} = service;
     return (
         
 		<div>
@@ -10,12 +10,13 @@ const BrandCard = ({brand}) => {
 	
     <div>
 		<img src={img}  alt="" className="object-cover w-full mb-4 h-60 sm:h-96 dark:bg-gray-500"/>
-		<h2 className="mb-1 text-xl font-semibold">{brand_name}</h2>
-		<p className="text-sm dark:text-gray-400">{original_price}</p>
-		<p className="text-sm dark:text-gray-400">{resale_price}</p>
-		<p className="text-sm dark:text-gray-400">{postedDate}</p>
-		<p className="text-sm dark:text-gray-400">{Location}</p>
-		<p className="text-sm dark:text-gray-400">{seller}</p>
+		<h2 className="mb-1 text-xl font-semibold">brand_name: {brand_name}</h2>
+		<p className="text-sm dark:text-gray-400">original_price: {original_price}</p>
+		<p className="text-sm dark:text-gray-400">resale_price: {resale_price}</p>
+		<p className="text-sm dark:text-gray-400">postedDate: {postedDate}</p>
+		<p className="text-sm dark:text-gray-400">Location: {Location}</p>
+		<p className="text-sm dark:text-gray-400">seller: {seller}</p>
+		<p className="text-sm dark:text-gray-400">Used: {yearUsed}year</p>
 	</div>
 	<div className="flex flex-wrap justify-between">
 		<div className="space-x-2">
@@ -46,11 +47,14 @@ const BrandCard = ({brand}) => {
 				<span>283</span>
 			</button>
 		</div>
-		<button type="button" className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md bg-violet-600 dark:text-gray-900">Book Now</button>
-	</div>
-</div>
+
+		<label onClick={()=> setPhoneServices(service)} htmlFor="phone-modal" className="btn flex items-center justify-center w-full p-3 font-semibold tracking-wide 
+		rounded-md bg-violet-600 dark:text-gray-900">Book Now</label>
+	
+	  </div>
+    </div>
 			
-		</div>
+  </div>
             
 			
 	
