@@ -28,32 +28,32 @@ const MyProduct = () => {
     <thead>
       <tr>
         <th></th>
-        <th>Name</th>
-        <th>phoneServices</th>
-        <th>original_price</th>
-        <th>resale_price</th>
-        <th>phoneServices</th>
-        <th>original_price</th>
-        <th>phone</th>
-        <th>Location</th>
-        <th>purchase_year</th>
-        <th>message</th>
+        <th>userName</th>
+         <th>email</th>
+         <th>brand_name</th>
+         <th>original_price</th>
+         <th>resale_price</th>
+         <th>Location</th>
+         <th>phone</th>
+         <th>postedDate</th>
+         <th>message</th>
         
       </tr>
     </thead>
     <tbody>
      
-      {orderings.map((ordering, i) => <tr>
-         <th>{i}</th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
-         <th></th>
+      {orderings.map((ordering, i) => <tr key={ordering._id}>
+         <th>{i+1}</th>
+         
+         <th>{ordering.userName}</th>
+         <th>{ordering.email}</th>
+         <th>{ordering.brand_name}</th>
+         <th>{ordering.original_price}</th>
+         <th>{ordering.resale_price}</th>
+         <th>{ordering.Location}</th>
+         <th>{ordering.phone}</th>
+         <th>{ordering.purchase_year}</th>
+         <th>{ordering.message}</th>
 
       </tr>)
       }
