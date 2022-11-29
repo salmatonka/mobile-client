@@ -1,9 +1,10 @@
 import React from 'react';
 import {useState,useContext} from 'react';
-import { Link, useNavigate} from 'react-router-dom';
+import { Link, useNavigate,useLocation} from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import {toast} from 'react-toastify';
 import { useForm } from 'react-hook-form';
+import useToken from '../../hooks/useToken';
 
 const SignUp = () => {
 	  
@@ -11,8 +12,19 @@ const SignUp = () => {
 	const {register,handleSubmit,formState: { errors }} = useForm();
      
     const {createUser,updateUser} = useContext(AuthContext);
-	const [signUpError,setSignUpError] = useState('')
-        const navigate = useNavigate;
+	const [signUpError,setSignUpError] = useState('');
+
+	const [createdUserEmail, setCreatedUserEmail] = useState('');
+	const [token] = useToken(createdUserEmail);
+    const navigate = useNavigate;
+	const location = useLocation();
+
+	const from = location.state?.from?.pathname || '/'
+
+      if(token){
+		navigate(from, { replace: true }) ;
+	  }
+
          const handleSignUp = (data) =>{
            console.log(data);
            setSignUpError('');
@@ -43,25 +55,39 @@ const SignUp = () => {
 }
 
   const saveAllUser = (name, email) =>{
-	const user = {name, email};
+	const user ={name, email};
 
-	fetch('http://localhost:5000/users',{
+	fetch('https://mobile-market-server-nu.vercel.app/users', {
 		method: "POST",
 		headers: {
 			"content-type" : "application/json",
-			// authorization: `Bearer ${localStorage.getItem ('token')}`
+			authorization: `Bearer ${localStorage.getItem ('token')}`
 		},
 		body : JSON.stringify(user)
 	   })
 	   .then(res=> res.json())
 	   .then(data=>{
-		console.log('saveAllUser', data);
-		navigate('/');
-	 
+		setCreatedUserEmail(email);
+		
    })
 	  
   }
 	
+// //   const [token, setToken] = useState('');
+//     const getUserToken = email =>{
+
+//             fetch(`https://mobile-market-server-nu.vercel.app/jwt?email=${email}`)
+// 		     .then(res =>res.json())
+// 		     .then(data =>{
+// 			    if (data.accessToken){
+//                  localStorage.setItem('accessToken', data.accessToken);
+// 				   navigate('/')
+                   
+// 			}
+// 		});
+//         }
+    
+
 
     return (
 		<div className='h-[800px] flex justify-center items-center'>

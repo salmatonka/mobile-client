@@ -4,6 +4,7 @@ import Main from "../../layout/Main";
 import BrandCard from "../../Pages/Category/BrandCard/BrandCard";
 import Category from "../../Pages/Category/Category/Category";
 import CategoryDetails from "../../Pages/Category/CategoryDetails/CategoryDetails";
+import AllUsers from "../../Pages/Dashboard/AllUsers/AllUsers";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import MyProduct from "../../Pages/Dashboard/MyProduct/MyProduct";
 
@@ -45,6 +46,11 @@ const router = createBrowserRouter([
                   
             },
             {
+                path:'/dashboard',
+                element:<Dashboard></Dashboard>,
+                  
+            },
+            {
                 path:'/blog',
                 element:<Blog></Blog>,  
             },
@@ -61,14 +67,19 @@ const router = createBrowserRouter([
     },
     {
         path:'/dashboard',
-        element:
-            // <PrivateRoute>
-            <DashboardLayout></DashboardLayout>,
-            // </PrivateRoute>,
+        element: 
+            //    <PrivateRoute>
+               <DashboardLayout></DashboardLayout>,
+        //  </PrivateRoute> 
+            
             children:[
                 {
                     path:'/dashboard',
                     element:<MyProduct></MyProduct>,  
+                },
+                {
+                    path:'/dashboard/allusers',
+                    element:<AllUsers></AllUsers>,  
                 },
             ]
     }

@@ -10,7 +10,7 @@ const CategoryDetails = () => {
     const { data:services = [] } = useQuery({
       queryKey: ['services'],
       queryFn: async() =>{
-        const res = await fetch('http://localhost:5000/services');
+        const res = await fetch('https://mobile-market-server-nu.vercel.app/services');
         const data = await res.json();
         return data;
       } 
@@ -25,7 +25,7 @@ const CategoryDetails = () => {
   
 
     // useEffect(() =>{
-    //     fetch('http://localhost:5000/services')
+    //     fetch('https://mobile-market-server-nu.vercel.app/services')
     //     .then(res =>res.json())
     //     .then(data => setServices(data))
     //   },[])

@@ -6,12 +6,17 @@ import {useQuery} from '@tanstack/react-query';
 
 const MyProduct = () => {
     const {user} = useContext(AuthContext);
-    const url = `http://localhost:5000/orderings?email=${user?.email}`;
 
-    const { data: orderings = [] } = useQuery({
+    const url = `https://mobile-market-server-nu.vercel.app/orderings?email=${user?.email}`;
+
+    const { data:orderings = [] } = useQuery({
         queryKey: ['orderings', user?.email],
         queryFn: async() =>{
-          const res = await fetch(url);
+            const res = await fetch(url,{
+              headers: {
+               authorization: `bearer ${localStorage.getItem('accessToken')}`
+              }
+            });
           const data = await res.json();
           return data;
         } 
@@ -42,7 +47,7 @@ const MyProduct = () => {
     </thead>
     <tbody>
      
-      {orderings.map((ordering, i) => <tr key={ordering._id}>
+      {orderings?.length && orderings.map((ordering, i) => <tr key={ordering._id}>
          <th>{i+1}</th>
          
          <th>{ordering.userName}</th>

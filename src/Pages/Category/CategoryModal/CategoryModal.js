@@ -35,7 +35,7 @@ const CategoryModal = ({phoneServices,setPhoneServices}) => {
        
       //   orderings
        
-      fetch('http://localhost:5000/orderings',{
+      fetch('https://mobile-market-server-nu.vercel.app/orderings',{
 		method: "POST",
 		headers: {
 			"content-type" : "application/json",
