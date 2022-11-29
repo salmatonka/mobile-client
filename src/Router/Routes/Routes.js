@@ -1,14 +1,17 @@
 import { createBrowserRouter } from "react-router-dom";
+
 import DashboardLayout from "../../layout/DashboardLayout";
 import Main from "../../layout/Main";
-import BrandCard from "../../Pages/Category/BrandCard/BrandCard";
+
 import Category from "../../Pages/Category/Category/Category";
 import CategoryDetails from "../../Pages/Category/CategoryDetails/CategoryDetails";
+
 import AllUsers from "../../Pages/Dashboard/AllUsers/AllUsers";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import MyProduct from "../../Pages/Dashboard/MyProduct/MyProduct";
 
 import Home from "../../Pages/Home/Home/Home";
+import Advertised from "../../Pages/Advertised/Advertised/Advertised";
 import Login from "../../Pages/Login/Login";
 import SignUp from "../../Pages/SignUp/SignUp";
 import Blog from "../../shares/Blog/Blog/Blog";
@@ -32,17 +35,22 @@ const router = createBrowserRouter([
                 element:<Home></Home>,  
             },
             {
-                path:'/category/:id',
-                element:<Category></Category>,  
+                path:'/category',
+                element:<Category></Category>,
+                  
             },
+           
             {
                 path:'/categoryDetails/:id',
                 element:<CategoryDetails></CategoryDetails>,
+                loader:({params})=>
+                fetch(`http://localhost:5000/services/${params.id}`),
+                
                   
             },
             {
-                path:'/brandCard',
-                element:<BrandCard></BrandCard>,
+                path:'/advertised',
+                element: <Advertised></Advertised>,
                   
             },
             {

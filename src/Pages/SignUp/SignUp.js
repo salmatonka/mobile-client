@@ -56,38 +56,24 @@ const SignUp = () => {
 
   const saveAllUser = (name, email) =>{
 	const user ={name, email};
-
-	fetch('https://mobile-market-server-nu.vercel.app/users', {
+console.log(user)
+	fetch('http://localhost:5000/users', {
 		method: "POST",
 		headers: {
 			"content-type" : "application/json",
-			authorization: `Bearer ${localStorage.getItem ('token')}`
+			
 		},
 		body : JSON.stringify(user)
 	   })
 	   .then(res=> res.json())
 	   .then(data=>{
+		console.log(data)
 		setCreatedUserEmail(email);
 		
    })
 	  
   }
 	
-// //   const [token, setToken] = useState('');
-//     const getUserToken = email =>{
-
-//             fetch(`https://mobile-market-server-nu.vercel.app/jwt?email=${email}`)
-// 		     .then(res =>res.json())
-// 		     .then(data =>{
-// 			    if (data.accessToken){
-//                  localStorage.setItem('accessToken', data.accessToken);
-// 				   navigate('/')
-                   
-// 			}
-// 		});
-//         }
-    
-
 
     return (
 		<div className='h-[800px] flex justify-center items-center'>
@@ -125,14 +111,14 @@ const SignUp = () => {
 		<label className="label"><span className="label-text">forget password</span></label>
   
   </div>
-  <input type="submit" value='Sign Up' className="mt-4 text-white btn btn-accent w-full max-w-xs" />
+  <input type="submit" value='Sign Up' className="mt-4 text-white btn bg-violet-400 w-full max-w-xs" />
   {signUpError && <p className='text-red-600'>{signUpError}</p>}
   </form>
 
   <p>Already have a account <Link className='text-primary'  to='/login'>please login</Link> </p>
   <div className="divider">OR</div>     
 	
-  <button className=" btn btn-output text-white w-full max-w-xs">
+  <button className=" btn bg-violet-400 text-white w-full max-w-xs">
 	Continue with google
   </button>
 

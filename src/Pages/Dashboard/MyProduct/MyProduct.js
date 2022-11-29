@@ -7,14 +7,14 @@ import {useQuery} from '@tanstack/react-query';
 const MyProduct = () => {
     const {user} = useContext(AuthContext);
 
-    const url = `https://mobile-market-server-nu.vercel.app/orderings?email=${user?.email}`;
+    const url = `http://localhost:5000/orderings?email=${user?.email}`;
 
     const { data:orderings = [] } = useQuery({
         queryKey: ['orderings', user?.email],
         queryFn: async() =>{
             const res = await fetch(url,{
               headers: {
-               authorization: `bearer ${localStorage.getItem('accessToken')}`
+               authorization: `Bearer ${localStorage.getItem('accessToken')}`
               }
             });
           const data = await res.json();
