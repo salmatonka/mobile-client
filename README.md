@@ -11,8 +11,7 @@ This project was tailwindcss with(https://tailwindcss.com/).
 4.  "react-hook-form": (https://react-hook-form.com/) ,   
 5. "react-toastify": (https://www.npmjs.com/package/react-toastify),
 
-### Deployment:
-
+### Project Deploy:
 1. firebae;
 ### Link:
 1. server-side code: (https://mobile-phone-server-mu.vercel.app) ;
